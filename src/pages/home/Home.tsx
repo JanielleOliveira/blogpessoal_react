@@ -22,7 +22,7 @@ function Home() {
 
           <div className="flex justify-center ">
             <img
-              src="https://img.freepik.com/vetores-premium/mulher-negra-trabalhando-no-laptop-freelance-trabalho-remoto-estudo-online_254685-281.jpg"
+              src="https://i.pinimg.com/736x/e2/21/0d/e2210d8d6553fd1146e4a11cdeea916a.jpg"
               alt="Imagem Página Home"
               className="w-2/3"
             />
