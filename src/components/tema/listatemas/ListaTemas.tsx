@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -69,7 +70,7 @@ function ListaTemas() {
 
               {(!isLoading && temas.length === 0) && (
                 <span className="text-3xl text-center my-8">
-                   Nenhum Tema foi encontrado! </span>)
+                   Nenhum Tema foi encontrado! </span>) 
               }
 
               {
