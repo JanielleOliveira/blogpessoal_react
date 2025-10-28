@@ -20,3 +20,9 @@ export const login = async (url: string, dados: Object, setDados: Function) => {
   setDados(resposta.data) // Atualizado o estado com os dados retornados pela API, incluindo o token JWT.
 
 }
+
+// Função responsável por executar todas as operações de busca de recursos na API, como obter listas de postagens, temas, usuários, etc.
+export const buscar = async (url: string, setDados: Function, header: Object) => {
+    const resposta = await api.get(url, header) // Executa uma requisição GET para a URL especificada com os cabeçalhos fornecidos.
+    setDados(resposta.data) 
+}
