@@ -26,3 +26,15 @@ export const buscar = async (url: string, setDados: Function, header: Object) =>
     const resposta = await api.get(url, header) // Executa uma requisição GET para a URL especificada com os cabeçalhos fornecidos.
     setDados(resposta.data) 
 }
+
+// Função responsável por cadastrar novos recursos na API, como postagens, temas, usuários, etc.
+export const cadastrar = async (url: string, dados: Object, setDados: Function, header: Object) => {
+    const resposta = await api.post(url, dados, header)// Envia uma requisição POST para a URL especificada com os dados e cabeçalhos fornecidos.
+    setDados(resposta.data)
+}
+
+// Função responsável por atualizar recursos existentes na API, como postagens, temas, usuários, etc.
+export const atualizar = async (url: string, dados: Object, setDados: Function, header: Object) => {
+    const resposta = await api.put(url, dados, header)// Envia uma requisição PUT para a URL especificada com os dados e cabeçalhos fornecidos.
+    setDados(resposta.data)// Atualiza o estado com os dados retornados pela API.
+}
