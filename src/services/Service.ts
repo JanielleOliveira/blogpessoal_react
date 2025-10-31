@@ -38,3 +38,8 @@ export const atualizar = async (url: string, dados: Object, setDados: Function, 
     const resposta = await api.put(url, dados, header)// Envia uma requisição PUT para a URL especificada com os dados e cabeçalhos fornecidos.
     setDados(resposta.data)// Atualiza o estado com os dados retornados pela API.
 }
+
+// Função responsável por deletar recursos na API, como postagens, temas, usuários, etc.
+export const deletar = async (url: string, header: Object) => { 
+    await api.delete(url, header)// Envia uma requisição DELETE para a URL especificada com os cabeçalhos fornecidos.
+}
