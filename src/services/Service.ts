@@ -4,8 +4,8 @@
 import axios from "axios"; // Importa a biblioteca Axios para fazer requisições HTTP.
 
 // Configuração da instância do Axios com a URL baase da API
-const api = axios.create({ 
-  baseURL: 'https://blogpessoal-nest-xbwb.onrender.com' // Url base da API, backend hospedado no render.
+export const api = axios.create({ 
+  baseURL: import.meta.env.VITE_API_URL // Url base da API, backend hospedado no render.
 });
 
 // Função para cadastrar um novo usuário
