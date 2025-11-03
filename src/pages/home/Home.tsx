@@ -21,7 +21,7 @@ function Home() {
 
           <div className="flex justify-center ">
             <img
-              src="https://blog-entreprendre.fr/wp-content/uploads/2018/08/78791213_thumbnail.jpg"
+              src="https://img.freepik.com/premium-photo/elearning-course-illustration-mockup_1254992-470.jpg"
               alt="Imagem Página Home"
               className="w-2/3"
             />

@@ -40,7 +40,7 @@ function Login() {
     return (
         <>
             <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center bg-slate-950 font-bold ">
-                <form className="flex justify-center items-center flex-col w-1/2 gap-4  bg-slate-900/80 p-8" 
+                <form className="flex justify-center items-center flex-col w-1/2 gap-4  bg-slate-900/80 p-9" 
                 onSubmit={login}>
 
                     <h2 className="text-emerald-400 text-5xl mb-2">Entrar</h2>
@@ -90,7 +90,7 @@ function Login() {
                    <p className="text-slate-400">
                         Ainda não tem uma conta?{' '}
                         <Link to="/cadastro" className="text-emerald-500 hover:underline">
-                            Cadastre-se
+                          Cadastre-se
                         </Link>
                     </p>
                 </form>

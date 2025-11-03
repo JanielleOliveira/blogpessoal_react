@@ -124,7 +124,8 @@ function FormTema() {
           />
         </div>
         <button
-          className="rounded text-slate-100 bg-emerald-700 hover:bg-emerald-500 w-1/2 py-2 mx-auto flex justify-center"
+          className="rounded-xl bg-gradient-to-r from-slate-950 to-emerald-500 hover:opacity-90
+                     text-white font-bold w-1/2 mx-auto py-2 flex justify-center items-center transition-all shadow-md"
           type="submit">
             
           { isLoading ? 
