@@ -2,6 +2,7 @@
 import { createContext, useState, type ReactNode } from 'react';
 import type UsuarioLogin from '../models/UsuarioLogin';
 import { login } from '../services/Service';
+import { ToastAlerta } from '../utils/ToastAlerta';
 
 // interface de tipagem do contexto de autenticação - o que ele vai fornecer - funções e estados.
 interface AuthContextProps {
@@ -41,10 +42,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     try {
       await login('/usuarios/logar', usuarioLogin, setUsuario);
-      alert('O usuário foi autenticado com sucesso!');
+      ToastAlerta("Usuário foi autenticado com sucesso!", "sucesso")
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      alert('Dados inconsistentes. Erro ao autenticar!');
-      console.log(error);
+      ToastAlerta("Os dados do Usuário estão inconsistentes!", "erro")
     }
 
     setIsLoading(false);// Finaliza o carregamento após a tentativa de login.

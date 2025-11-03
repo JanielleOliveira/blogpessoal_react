@@ -6,6 +6,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import type Postagem from "../../../models/Postagem";
 import { buscar } from "../../../services/Service";
 import CardPostagem from "../cardpostagem/CardPostagem";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaPostagens() {
 
@@ -20,7 +21,7 @@ function ListaPostagens() {
 
     useEffect(() => {
         if (token === '') {
-            alert('É necessário estar logado!')
+            ToastAlerta('É necessário estar logado!', 'info')
             navigate('/')
         }
     }, [token])

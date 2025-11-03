@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { ClipLoader } from "react-spinners"
 import { AuthContext } from "../../../contexts/AuthContext"
 import type Tema from "../../../models/Tema"
 import { buscar, deletar } from "../../../services/Service"
-import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function DeletarTema() {
 
@@ -34,7 +35,7 @@ function DeletarTema() {
 
   useEffect(() => {
     if (token === '') {
-      alert('É necessário estar logado')
+      ToastAlerta('É necessário estar logado!', 'info')
       navigate('/')
     }
   }, [token])
@@ -55,12 +56,12 @@ function DeletarTema() {
         }
       })
 
-      alert('Tema deletado com sucesso')
+      ToastAlerta('Tema deletado com sucesso', 'sucesso')
     } catch (error: any) {
       if (error.toString().includes('401')) {
         handleLogout()
       } else {
-        alert('Erro ao deletar o tema.')
+        ToastAlerta('Erro ao deletar o tema.', 'erro')
       }
     }
 
@@ -75,25 +76,25 @@ function DeletarTema() {
 
   return (
     <div className='container w-1/3 mx-auto'>
-      <h1 className='text-4xl text-center my-4'>Deletar tema</h1>
+      <h1 className='text-4xl text-center font-bold my-4'>Deletar tema</h1>
       <p className='text-center font-semibold mb-4 animate-pulse'>
         ⚠ Tem certeza de que deseja deletar o tema a seguir?
       </p>
       <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
         <header
-          className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>
+          className='py-2 px-6 bg-slate-800  text-emerald-300  font-bold text-2xl'>
           Tema
         </header>
         <p className='p-8 text-3xl bg-slate-200 h-full'>{tema.descricao}</p>
         <div className='flex'>
           <button
-            className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2'
+            className='text-slate-100 bg-red-700 hover:bg-red-500 w-full py-2'
             onClick={retornar}>
             Não
           </button>
           <button
-            className='w-full text-slate-100 bg-indigo-400
-            hover:bg-indigo-600 flex items-center justify-center' onClick={deletarTema}>
+            className='w-full text-slate-100 bg-emerald-700 hover:bg-emerald-500 
+                      flex items-center justify-center' onClick={deletarTema}>
 
             { isLoading ?
                 <ClipLoader

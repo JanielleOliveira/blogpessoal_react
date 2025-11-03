@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { AuthContext } from "../../contexts/AuthContext"
+import { ToastAlerta } from "../../utils/ToastAlerta"
 
 function Perfil() {
 	const navigate = useNavigate()
@@ -10,7 +11,7 @@ function Perfil() {
 
 	useEffect(() => {
 		if (usuario.token === "") {
-			alert("É necessário estar logado")
+			ToastAlerta("É necessário estar logado", 'info')
 			navigate("/")
 		}
 	}, [usuario.token])
@@ -20,19 +21,19 @@ function Perfil() {
 			<div className="container mx-auto my-4 rounded-2xl overflow-hidden">
 				<img
 					className="w-full h-72 object-cover border-b-8 border-white"
-					src="https://i.imgur.com/ZZFAmzo.jpg"
+					src="https://daminion.net/articles/wp-content/uploads/2010/05/catalogsnew.jpg"
 					alt="Capa do Perfil"
 				/>
 
 				<img
 					className="rounded-full w-52 mx-auto mt-[-8rem] border-8 border-white relative z-10"
-					src={usuario.foto || 'https://ik.imagekit.io/2zvbvzaqt/usuario.png'}
+					src={usuario.foto || 'https://mirbach-heizungsbau.de/bilder/benutzer.png'}
 					alt={`Foto de perfil de ${usuario.nome}`}
 				/>
 
 				<div
 					className="relative mt-[-6rem] h-72 flex flex-col 
-                     bg-orange-200 text-black text-2xl items-center justify-center"
+                     bg-slate-800 text-white text-2xl items-center justify-center"
 				>
 					<p>Nome: {usuario.nome} </p>
 					<p>Email: {usuario.usuario}</p>

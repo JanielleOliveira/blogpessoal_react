@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import type Usuario from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 
 function Cadastro() { 
@@ -67,15 +68,14 @@ function Cadastro() {
         //Utiliza axios do serviço Service.ts para enviar uma requisição de cadastro para a API.
         await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario)
         // Se o cadastro for bem-sucedido, exibe uma mensagem de sucesso e redireciona para a página de login.
-        alert('Usuário cadastrado com sucesso!')
-        retornar()
+        ToastAlerta('Usuário cadastrado com sucesso!', 'sucesso')
       }catch(error){
         // Se ocorrer um erro durante o cadastro, exibe uma mensagem de erro.
-        alert('Erro ao cadastrar o usuário!')
+        ToastAlerta('Erro ao cadastrar o usuário!', 'erro')
       }
 
     }else{ // Else da verificação de senha. exibe um alerta e reseta os campos de senha.
-      alert('Dados do usuário inconsistentes! Verifique as informações do cadastro.')
+      ToastAlerta('Dados do usuário inconsistentes! Verifique as informações do cadastro.', 'erro')
       setUsuario({...usuario, senha: ''}) 
       setConfirmarSenha('')
     }
@@ -88,71 +88,71 @@ function Cadastro() {
   return (
     <>
       <div className="grid grid-cols-2 lg:grid-cols-2 h-screen 
-            place-items-center font-bold">
+            place-items-center bg-slate-950 font-bold">
         <div
-          className="bg-[url('https://img.freepik.com/free-vector/businessman-morning-day-schedule-notebook_3446-603.jpg?semt=ais_hybrid&w=740&q=80')] lg:block hidden bg-no-repeat 
+          className="bg-[url('https://img.freepik.com/vetores-premium/teclado-do-pc-das-maos_88272-407.jpg')] lg:block hidden bg-no-repeat 
                     w-full min-h-screen bg-cover bg-center"
         ></div>
         <form className='flex justify-center items-center flex-col w-2/3 gap-3'
               onSubmit={cadastrarNovoUsuario}> 
             
-          <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
+          <h2 className='text-emerald-400 text-5xl'>Cadastrar</h2>
           <div className="flex flex-col w-full">
-            <label htmlFor="nome">Nome</label>
+            <label htmlFor="nome" className="text-slate-300">Nome</label>
             <input
               type="text"
               id="nome"
               name="nome"
               placeholder="Nome"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-amber-50  rounded p-2  text-slate-100 placeholder-slate-500"
               value={usuario.nome}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}           
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="usuario">Usuario</label>
+            <label htmlFor="usuario" className="text-slate-300">Usuario</label>
             <input
               type="text"
               id="usuario"
               name="usuario"
               placeholder="Usuario"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-amber-50  rounded p-2  text-slate-100 placeholder-slate-500"
               value={usuario.usuario}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="foto">Foto</label>
+            <label htmlFor="foto" className="text-slate-300">Foto</label>
             <input
               type="text"
               id="foto"
               name="foto"
               placeholder="Foto"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-amber-50  rounded p-2  text-slate-100 placeholder-slate-500"
               value={usuario.foto}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="senha">Senha</label>
+            <label htmlFor="senha" className="text-slate-300">Senha</label>
             <input
               type="password"
               id="senha"
               name="senha"
               placeholder="Senha"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-amber-50  rounded p-2  text-slate-100 placeholder-slate-500"
               value={usuario.senha}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
           <div className="flex flex-col w-full">
-            <label htmlFor="confirmarSenha">Confirmar Senha</label>
+            <label htmlFor="confirmarSenha" className="text-slate-300">Confirmar Senha</label>
             <input
               type="password"
               id="confirmarSenha"
               name="confirmarSenha"
               placeholder="Confirmar Senha"
-              className="border-2 border-slate-700 rounded p-2"
+              className="border-2 border-amber-50 rounded p-2  text-slate-100 placeholder-slate-500"
               value={confirmarSenha}
               onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
             />
@@ -160,15 +160,15 @@ function Cadastro() {
           <div className="flex justify-around w-full gap-8">
             <button 
                 type='reset'
-                className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2'
+                className='rounded text-white bg-red-700 hover:bg-red-500 w-1/2 py-2'
                 onClick={retornar}
              >
                 Cancelar
             </button>
             <button 
                 type='submit'
-                className='rounded text-white bg-green-300 
-                           hover:bg-green-700 w-1/2 py-2
+                className='rounded text-white bg-emerald-700  
+                           hover:bg-emerald-500  w-1/2 py-2
                            flex justify-center' 
                 >
                 {isLoading ? 

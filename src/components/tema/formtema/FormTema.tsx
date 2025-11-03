@@ -7,10 +7,11 @@ import {
   type FormEvent,
 } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 import { AuthContext } from "../../../contexts/AuthContext";
 import type Tema from "../../../models/Tema";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
-import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 // Componente de formulário para cadastro de temas
 function FormTema() {
@@ -41,7 +42,7 @@ function FormTema() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado!");
+     ToastAlerta('É necessário estar logado!', 'info')
       navigate("/");
     }
   }, [token]);
@@ -75,12 +76,12 @@ function FormTema() {
         await atualizar(`/temas`, tema, setTema, {
           headers: { Authorization: token },
         });
-        alert("Tema foi atualizado com sucesso!");
+         ToastAlerta('O Tema foi atualizado com sucesso!', 'sucesso')
       } catch (error: any) {
         if (error.toString().includes("401")) { 
           handleLogout();
         } else {
-          alert("Erro ao atualizar o tema.");
+          ToastAlerta('Erro ao atualizar o tema.', 'erro')
         }
       }
     } else {
@@ -88,12 +89,12 @@ function FormTema() {
         await cadastrar(`/temas`, tema, setTema, {
           headers: { Authorization: token },
         });
-        alert("Tema foi cadastrado com sucesso!");
+          ToastAlerta('O Tema foi cadastrado com sucesso!', 'sucesso')
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          alert("Erro ao cadastrar o tema.");
+          ToastAlerta('Erro ao cadastrar o tema.', 'erro')
         }
       }
     }
@@ -123,8 +124,7 @@ function FormTema() {
           />
         </div>
         <button
-          className="rounded text-slate-100 bg-indigo-400
-                    hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center"
+          className="rounded text-slate-100 bg-emerald-700 hover:bg-emerald-500 w-1/2 py-2 mx-auto flex justify-center"
           type="submit">
             
           { isLoading ? 

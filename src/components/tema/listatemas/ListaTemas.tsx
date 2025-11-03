@@ -7,6 +7,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import type Tema from "../../../models/Tema";
 import { buscar } from "../../../services/Service";
 import CardTema from "../cardtema/CardTema";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 // Componente ListaTemas para exibir uma lista de temas
 function ListaTemas() {
@@ -23,7 +24,7 @@ function ListaTemas() {
     // Verifica se o usuário está logado ao carregar o componente
     useEffect(() => {
       if (token === '') {
-        alert('Você precisa estar logado!');
+        ToastAlerta("É necessário estar logado", 'info')
         navigate('/');
       }
     }, [token]);
