@@ -43,7 +43,9 @@ function Login() {
                 <form className="flex justify-center items-center flex-col w-1/2 gap-4  bg-slate-900/80 p-9" 
                 onSubmit={login}>
 
-                    <h2 className="text-emerald-400 text-5xl mb-2">Entrar</h2>
+                    <h2 className="text-5xl font-extrabold tracking-wide text-emerald-400 mb-2 hover:text-emerald-300 
+                    transition-colors duration-200">Console<span className="text-slate-300">.Blog</span>
+                    </h2>
 
                     <div className="flex flex-col w-full">
                         <label htmlFor="usuario" className="text-slate-300">Usuário</label>
